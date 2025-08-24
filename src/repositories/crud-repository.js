@@ -46,6 +46,21 @@ class CrudRepository {
         });
         return response;
     }
+
+    async updatePlane(id, data) {
+    const [updatedRows] = await this.model.update(data, {
+        where: { id: id }
+    });
+
+    if (!updatedRows) {
+        throw new AppError('Not able to find the resource', StatusCodes.NOT_FOUND);
+    }
+
+    // Return the updated object
+    const updated = await this.model.findByPk(id);
+    return updated;
+}
+
 }
 
 module.exports = CrudRepository;
