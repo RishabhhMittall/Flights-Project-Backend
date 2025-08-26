@@ -64,7 +64,7 @@ async function destroyAirplane(id) {
 
 async function modifyAirplane(id, data) {
     try {
-        const airplane = await airplaneRepository.updatePlane(id, data);
+        const airplane = await airplaneRepository.update(id, data);
         return airplane;
     } catch (error) {
         if (error.statusCode == StatusCodes.NOT_FOUND) {

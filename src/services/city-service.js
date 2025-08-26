@@ -27,7 +27,33 @@ async function createCity(data) {
     }
 }
 
+async function updateCity(id, data) {
+     try {
+        const city = await cityRepository.update(id, data);
+        if (!city) {
+            throw new AppError('City not found', StatusCodes.NOT_FOUND);
+        }
+        return city;
+    } catch (error) {
+        throw new AppError('Cannot update City', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
+async function deleteCity(id) {
+     try {
+        const result = await cityRepository.destroy(id);
+        if (!result) {
+            throw new AppError('City not found', StatusCodes.NOT_FOUND);
+        }
+        return { message: "City deleted successfully", id };
+    } catch (error) {
+        throw new AppError('Cannot delete City', StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}   
+
 
 module.exports = {
     createCity,
+    updateCity,
+    deleteCity
 }
