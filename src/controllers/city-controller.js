@@ -3,6 +3,25 @@ const { CityService } = require("../services");
 const { ErrorResponse, SuccessResponse } = require("../utils/common");
 
 /**
+ * GET: /cities
+ */
+async function getAllCities(req, res) {
+  try {
+    const cities = await CityService.getAllCities();
+    SuccessResponse.data = cities;
+    return res
+      .status(StatusCodes.OK)
+      .json(SuccessResponse);
+  } catch (error) {
+    ErrorResponse.error = error;
+    return res
+      .status(error.statusCode || StatusCodes.INTERNAL_SERVER_ERROR)
+      .json(ErrorResponse);
+  }
+}
+
+
+/**
  * POST: /cities
  * req-body {name: 'London'}
  */
@@ -70,6 +89,7 @@ async function deleteCity(req, res) {
 }
 
 module.exports = {
+    getAllCities,
     createCity,
     updateCity,
     deleteCity,
