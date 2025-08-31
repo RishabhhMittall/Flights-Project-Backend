@@ -1,4 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
+const { compareTime } = require('../utils/helpers/date-time-helpers');
 
 const { FlightRepository } = require('../repositories');
 const AppError = require('../utils/errors/app-error');
@@ -9,7 +10,7 @@ const flightRepository = new FlightRepository();
 
 async function createFlight(data) {
     try {
-        if(new Date(data.departureTime) >= new Date(data.arrivalTime)) {
+         if (compareTime(data.departureTime, data.arrivalTime)) {
             throw new AppError('Departure time must be before arrival time', StatusCodes.BAD_REQUEST);
         }
         const flight = await flightRepository.create(data);
