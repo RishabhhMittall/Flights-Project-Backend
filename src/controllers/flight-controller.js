@@ -12,7 +12,7 @@ const { ErrorResponse, SuccessResponse } = require("../utils/common");
  * arrivalTime: '11:10:00',
  * departureTime: '09:10:10',
  * price: 2000
- *  : '12A',
+ * boardingGate: '12A',
  * totalSeats: 190
  * }
  */
