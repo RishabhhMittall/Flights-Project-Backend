@@ -1,4 +1,10 @@
+const AirplaneMiddlewares = require('./airplane-middlewares');
+const CityMiddlewares = require('./city-middlewares');
+const AirportMiddlewares = require('./airport-middlewares');
+
+
 module.exports = {
-    AirplaneMiddlewares : require('./airplane-middlewares'),
-    CityMiddlewares : require('./city-middlewares'),
+    AirplaneMiddlewares,
+    CityMiddlewares,
+    AirportMiddlewares
 }

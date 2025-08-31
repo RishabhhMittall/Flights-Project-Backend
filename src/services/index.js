@@ -1,4 +1,10 @@
+const AirplaneService = require('./airplane-service');
+const CityService = require('./city-service');
+const AirportSerivce = require('./airport-service');
+
 module.exports = {
-    AirplaneService: require('./airplane-service'),
-    CityService: require('./city-service'),
+    AirplaneService,
+    CityService,
+    AirportSerivce,
+
 }
