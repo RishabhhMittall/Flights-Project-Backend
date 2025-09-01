@@ -1,4 +1,9 @@
+const ErrorResponse =  require('./error-response');
+const SuccessResponse = require('./success-response');
+const Enums = require('./enums');
 module.exports = {
-    ErrorResponse: require('./error-response'),
-    SuccessResponse: require('./success-response')
+    ErrorResponse,
+    SuccessResponse,
+    Enums
+    
 }
