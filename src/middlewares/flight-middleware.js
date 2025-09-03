@@ -55,6 +55,16 @@ function validateCreateRequest(req, res, next) {
   next();
 }
 
+function validateUpdateSeatRequest (req, res , next) {
+  if (!req.body.seats || isNaN(Number(req.body.seats)) || Number(req.body.seats) < 0) {
+    ErrorResponse.message = 'Seats not found or not a valid positive number';
+    ErrorResponse.error = new AppError(['Seats not found in the incoming request in the correct form'], StatusCodes.BAD_REQUEST);
+    return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
+  }
+  next();
+}
+
 module.exports = {
     validateCreateRequest,
+    validateUpdateSeatRequest
 }
